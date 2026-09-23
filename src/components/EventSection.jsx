@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion'
 import { Calendar, Clock, MapPin, ExternalLink } from 'lucide-react'
 import weddingData from '../data/weddingData'
-import { CornerFlourish, OrnDivider, ArchCrest } from './ornaments'
+import { CornerFlourish, OrnDivider, ArchCrest, WayangBackdrop } from './ornaments'
 
 export default function EventSection() {
   const event = weddingData.event.resepsi
 
   return (
-    <section id="event" className="relative py-24 md:py-32 bg-gradient-to-b from-cream-200 via-ivory to-cream-200">
-      <div className="max-w-lg mx-auto px-8">
+    <section id="event" className="relative py-24 md:py-32 bg-gradient-to-b from-cream-200 via-ivory to-cream-200 overflow-hidden">
+      <WayangBackdrop />
+      <div className="relative z-10 max-w-lg mx-auto px-8">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

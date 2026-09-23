@@ -194,6 +194,76 @@ export function OrnDivider({ className = '' }) {
   )
 }
 
+export function Gunungan({ className = '' }) {
+  return (
+    <svg viewBox="0 0 160 320" fill="currentColor" className={`w-full ${className}`} aria-hidden="true">
+      <circle cx="80" cy="4" r="4" />
+      <path d="M80 12C66 52 44 96 34 152C24 208 24 250 34 278C44 304 58 316 80 320C102 316 116 304 126 278C136 250 136 208 126 152C116 96 94 52 80 12Z" />
+      <path
+        d="M80 40C74 92 72 162 80 252"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="4"
+        strokeLinecap="round"
+        opacity="0.35"
+      />
+      <circle cx="80" cy="70" r="7" opacity="0.4" />
+      <circle cx="80" cy="130" r="5" opacity="0.35" />
+    </svg>
+  )
+}
+
+export function WayangFigure({ className = '' }) {
+  return (
+    <svg viewBox="0 0 160 360" fill="currentColor" className={`w-full ${className}`} aria-hidden="true">
+      <path d="M58 72C36 62 32 36 50 24C68 12 88 24 84 48C81 62 70 70 58 72Z" />
+      <path d="M64 56C74 34 96 26 114 34C104 40 98 48 96 56C106 54 114 58 118 66C108 64 98 66 94 72L70 70Z" />
+      <path d="M70 54C86 48 100 58 104 72C107 82 116 86 116 90C116 93 110 92 107 95C111 99 107 104 102 103C104 112 96 118 86 116L74 110C64 100 60 76 66 60Z" />
+      <path d="M68 84C60 88 56 98 60 106C64 112 72 110 72 102Z" />
+      <path d="M80 114C88 120 92 130 92 144C92 162 90 176 86 192L108 192C112 172 114 150 110 132C107 118 98 110 90 110Z" />
+      <path d="M104 140C120 144 134 136 142 122C146 114 156 118 153 127C145 150 127 164 106 160C98 158 96 146 104 140Z" />
+      <path d="M84 146C70 156 58 172 54 192C52 201 62 204 65 194C72 176 84 162 98 154Z" />
+      <path d="M84 180C66 190 52 206 46 228C44 236 54 240 58 230C66 210 78 196 94 188Z" />
+      <path d="M78 188L112 188C118 214 120 242 116 268L74 268C70 242 72 214 78 188Z" />
+      <path d="M74 264C74 278 80 286 90 286C94 292 104 292 108 286C116 286 120 278 116 264Z" />
+      <path d="M104 264C116 274 124 292 120 310C118 320 110 328 100 330L92 324C102 316 106 304 102 290C99 278 92 270 84 268Z" />
+      <path d="M78 264C72 280 64 296 54 308C48 316 56 326 66 320C80 310 92 294 96 276Z" />
+      <path d="M92 324C96 332 100 338 98 344H78C78 336 84 328 92 324Z" />
+      <path d="M66 320C70 328 74 336 72 344H52C52 336 58 326 66 320Z" />
+    </svg>
+  )
+}
+
+export function WayangBackdrop({ tone = 'light' }) {
+  const figure = tone === 'dark' ? 'text-bronze-200/20' : 'text-bronze-500/15'
+  const small = tone === 'dark' ? 'text-bronze-200/15' : 'text-bronze-500/10'
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      <div className={`absolute top-16 sm:top-20 left-1 w-8 sm:w-12 md:w-16 ${figure}`}>
+        <WayangFigure />
+      </div>
+      <div className={`absolute top-16 sm:top-20 right-1 w-8 sm:w-12 md:w-16 ${figure} -scale-x-100`}>
+        <WayangFigure />
+      </div>
+
+      <div className={`absolute bottom-2 left-1.5 w-8 sm:w-10 ${small}`}>
+        <Gunungan />
+      </div>
+      <div className={`absolute bottom-2 right-1.5 w-8 sm:w-10 ${small}`}>
+        <Gunungan />
+      </div>
+
+      <div className={`hidden md:block absolute top-1/3 left-2 w-10 ${small}`}>
+        <Gunungan />
+      </div>
+      <div className={`hidden md:block absolute top-1/3 right-2 w-10 ${small}`}>
+        <Gunungan />
+      </div>
+    </div>
+  )
+}
+
 export function ScriptHeading({ children, className = '' }) {
   return (
     <p className={`font-script text-bronze-500 leading-none ${className}`}>{children}</p>

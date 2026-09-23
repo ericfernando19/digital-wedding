@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 import weddingData from '../data/weddingData'
-import { OrnDivider } from './ornaments'
+import { OrnDivider, WayangBackdrop } from './ornaments'
 
 function GalleryImage({ image, index, onClick }) {
   return (
@@ -108,8 +108,9 @@ export default function GallerySection() {
   const nextImage = () => setLightboxIndex((prev) => (prev < weddingData.gallery.length - 1 ? prev + 1 : 0))
 
   return (
-    <section id="gallery" className="py-20 md:py-28 bg-gradient-to-b from-beige-50 to-ivory">
-      <div className="max-w-lg mx-auto px-6">
+    <section id="gallery" className="relative py-20 md:py-28 bg-gradient-to-b from-beige-50 to-ivory overflow-hidden">
+      <WayangBackdrop />
+      <div className="relative z-10 max-w-lg mx-auto px-6">
         <motion.div
           className="text-center mb-14"
           initial={{ opacity: 0, y: 20 }}

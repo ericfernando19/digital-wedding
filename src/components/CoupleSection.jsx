@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import weddingData from '../data/weddingData'
-import { OrnatePhotoFrame, OrnDivider } from './ornaments'
+import { OrnatePhotoFrame, OrnDivider, WayangBackdrop } from './ornaments'
 
 function PersonCard({ person, side }) {
   const isGroom = side === 'groom'
@@ -41,8 +41,9 @@ function PersonCard({ person, side }) {
 
 export default function CoupleSection() {
   return (
-    <section id="couple" className="relative py-24 md:py-32 bg-gradient-to-b from-cream-200 via-ivory to-cream-100">
-      <div className="max-w-lg mx-auto px-8">
+    <section id="couple" className="relative py-24 md:py-32 bg-gradient-to-b from-cream-200 via-ivory to-cream-100 overflow-hidden">
+      <WayangBackdrop />
+      <div className="relative z-10 max-w-lg mx-auto px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +51,7 @@ export default function CoupleSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-script text-bronze-500 text-3xl sm:text-4xl mb-5">
+          <p className="font-script text-bronze-500 text-2xl sm:text-4xl mb-5">
             Assalamualaikum Wr. Wb.
           </p>
 

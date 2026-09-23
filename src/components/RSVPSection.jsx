@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Check, AlertCircle, Loader2 } from 'lucide-react'
-import { CornerFlourish, OrnDivider, Pendopo } from './ornaments'
+import { CornerFlourish, OrnDivider, Pendopo, WayangBackdrop } from './ornaments'
 
 export default function RSVPSection() {
   const [formData, setFormData] = useState({
@@ -55,7 +55,8 @@ export default function RSVPSection() {
 
   return (
     <section id="rsvp" className="relative py-24 md:py-32 bg-gradient-to-b from-ivory via-cream-200 to-ivory overflow-hidden">
-      <div className="max-w-lg mx-auto px-8">
+      <WayangBackdrop />
+      <div className="relative z-10 max-w-lg mx-auto px-8">
         <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

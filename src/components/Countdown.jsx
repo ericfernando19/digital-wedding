@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Calendar } from 'lucide-react'
 import weddingData from '../data/weddingData'
-import { OrnDivider, CornerFlourish } from './ornaments'
+import { OrnDivider, CornerFlourish, WayangBackdrop } from './ornaments'
 
 function CountdownUnit({ value, label }) {
   return (
@@ -25,8 +25,9 @@ function CountdownUnit({ value, label }) {
 
 export default function Countdown({ timeLeft }) {
   return (
-    <section className="relative py-20 md:py-28 bg-gradient-to-b from-cream-100 to-cream-200">
-      <div className="max-w-lg mx-auto px-8">
+    <section className="relative py-20 md:py-28 bg-gradient-to-b from-cream-100 to-cream-200 overflow-hidden">
+      <WayangBackdrop />
+      <div className="relative z-10 max-w-lg mx-auto px-8">
         <motion.div
           className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}

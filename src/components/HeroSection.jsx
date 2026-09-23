@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import weddingData from '../data/weddingData'
 import { useGuestName } from '../hooks/useGuestName'
-import { OrnatePhotoFrame, OrnDivider, BotanicalSpray, Pendopo } from './ornaments'
+import { OrnatePhotoFrame, OrnDivider, Pendopo, WayangBackdrop } from './ornaments'
 
 export default function HeroSection() {
   const guestName = useGuestName()
@@ -10,12 +10,7 @@ export default function HeroSection() {
     <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-cream-50 via-ivory to-cream-200" />
 
-      <div className="absolute top-16 left-0 w-16 sm:w-24 h-56 sm:h-72 text-bronze-400/25 pointer-events-none">
-        <BotanicalSpray />
-      </div>
-      <div className="absolute top-16 right-0 w-16 sm:w-24 h-56 sm:h-72 text-bronze-400/25 pointer-events-none">
-        <BotanicalSpray flip />
-      </div>
+      <WayangBackdrop />
 
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[95%] max-w-xs sm:max-w-sm text-bronze-500/20 pointer-events-none">
         <Pendopo />

@@ -1,16 +1,11 @@
 import { motion } from 'framer-motion'
 import weddingData from '../data/weddingData'
-import { OrnDivider, CornerFlourish, ArchCrest, BotanicalSpray } from './ornaments'
+import { OrnDivider, CornerFlourish, ArchCrest, WayangBackdrop } from './ornaments'
 
 export default function Footer() {
   return (
     <footer className="relative py-24 md:py-32 bg-gradient-to-b from-beige-50 via-ivory to-cream-300 overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-24 sm:w-32 h-48 sm:h-60 text-bronze-200/30 pointer-events-none">
-        <BotanicalSpray />
-      </div>
-      <div className="absolute bottom-0 right-0 w-24 sm:w-32 h-48 sm:h-60 text-bronze-200/30 pointer-events-none">
-        <BotanicalSpray flip />
-      </div>
+      <WayangBackdrop />
 
       <div className="max-w-lg mx-auto px-8 text-center relative z-10">
         <motion.div

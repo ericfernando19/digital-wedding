@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { BookOpen } from 'lucide-react'
 import { useGuestName } from '../hooks/useGuestName'
 import weddingData from '../data/weddingData'
-import { OrnateFrame, OrnatePhotoFrame, BotanicalSpray } from './ornaments'
+import { OrnateFrame, OrnatePhotoFrame, WayangBackdrop } from './ornaments'
 
 export default function InvitationCover({ onOpen }) {
   const guestName = useGuestName()
@@ -14,26 +14,15 @@ export default function InvitationCover({ onOpen }) {
       transition={{ duration: 0.8, ease: 'easeInOut' }}
     >
       <div
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg fill='none' stroke='%23EDE2CE' stroke-opacity='0.9'%3E%3Cpath d='M45 12 C58 24 58 36 45 48 C32 36 32 24 45 12Z'/%3E%3Cpath d='M45 48 C58 60 58 72 45 84 C32 72 32 60 45 48Z'/%3E%3Cpath d='M12 45 C24 32 36 32 48 45 C36 58 24 58 12 45Z'/%3E%3Cpath d='M48 45 C60 32 72 32 84 45 C72 58 60 58 48 45Z'/%3E%3Ccircle cx='45' cy='45' r='2.5'/%3E%3C/g%3E%3C/svg%3E\")",
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23EDE2CE' stroke-opacity='0.9' stroke-width='1'%3E%3Cpath d='M26 6 C20 22 15 38 17 54 C19 66 23 74 26 80 C29 74 33 66 35 54 C37 38 32 22 26 6Z'/%3E%3Cpath d='M26 18 C24 34 24 52 26 68'/%3E%3Cpath d='M76 44 C70 60 65 76 67 88 C69 94 73 98 76 100'/%3E%3Cpath d='M76 56 C74 68 74 80 76 92'/%3E%3C/g%3E%3Cg fill='%23EDE2CE' fill-opacity='0.9'%3E%3Ccircle cx='50' cy='28' r='1.6'/%3E%3Ccircle cx='12' cy='88' r='1.6'/%3E%3Ccircle cx='92' cy='18' r='1.6'/%3E%3Ccircle cx='50' cy='78' r='1.2'/%3E%3C/g%3E%3C/svg%3E\")",
         }}
         aria-hidden="true"
       />
 
-      <div className="absolute top-0 left-0 w-20 sm:w-28 h-64 sm:h-80 text-bronze-200/30 pointer-events-none">
-        <BotanicalSpray />
-      </div>
-      <div className="absolute top-0 right-0 w-20 sm:w-28 h-64 sm:h-80 text-bronze-200/30 pointer-events-none">
-        <BotanicalSpray flip />
-      </div>
-      <div className="absolute bottom-0 left-0 w-20 sm:w-28 h-52 sm:h-64 text-bronze-200/30 rotate-180 pointer-events-none">
-        <BotanicalSpray flip />
-      </div>
-      <div className="absolute bottom-0 right-0 w-20 sm:w-28 h-52 sm:h-64 text-bronze-200/30 rotate-180 pointer-events-none">
-        <BotanicalSpray />
-      </div>
+      <WayangBackdrop tone="dark" />
 
       <OrnateFrame tone="dark" />
 

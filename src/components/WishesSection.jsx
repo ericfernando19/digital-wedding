@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, MessageCircle, Loader2, AlertCircle } from 'lucide-react'
-import { OrnDivider } from './ornaments'
+import { OrnDivider, WayangBackdrop } from './ornaments'
 
 function WishCard({ wish, index }) {
   return (
@@ -95,8 +95,9 @@ export default function WishesSection() {
   }
 
   return (
-    <section id="wishes" className="py-20 md:py-28 bg-gradient-to-b from-ivory to-beige-50">
-      <div className="max-w-lg mx-auto px-6">
+    <section id="wishes" className="relative py-20 md:py-28 bg-gradient-to-b from-ivory to-beige-50 overflow-hidden">
+      <WayangBackdrop />
+      <div className="relative z-10 max-w-lg mx-auto px-6">
         <motion.div
           className="text-center mb-14"
           initial={{ opacity: 0, y: 20 }}
