@@ -50,18 +50,6 @@ const weddingData = {
         logo: "Mandiri",
       },
     ],
-    ewallet: [
-      {
-        name: "GoPay",
-        phoneNumber: "081234567890",
-        accountName: "Andi Pratama",
-      },
-      {
-        name: "DANA",
-        phoneNumber: "081234567890",
-        accountName: "Andi Pratama",
-      },
-    ],
   },
   gallery: [
     {
