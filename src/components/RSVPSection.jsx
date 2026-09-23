@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Check, AlertCircle, Loader2 } from 'lucide-react'
+import { Check, AlertCircle, Loader2 } from 'lucide-react'
+import { CornerFlourish, OrnDivider, Pendopo } from './ornaments'
 
 export default function RSVPSection() {
   const [formData, setFormData] = useState({
@@ -29,7 +30,6 @@ export default function RSVPSection() {
 
     setStatus('loading')
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
 
     setStatus('success')
@@ -46,37 +46,56 @@ export default function RSVPSection() {
     }
   }
 
+  const inputClass = (error) =>
+    `w-full px-4 py-3 rounded-none border bg-cream-50 font-sans text-sm text-taupe-800 placeholder-taupe-300 focus:outline-none focus:ring-2 transition-all ${
+      error
+        ? 'border-red-300 focus:ring-red-200'
+        : 'border-bronze-300/70 focus:ring-bronze-300 focus:border-bronze-400'
+    }`
+
   return (
-    <section id="rsvp" className="py-20 md:py-28 bg-gradient-to-b from-ivory via-dusty-pink-50 to-ivory">
-      <div className="max-w-lg mx-auto px-6">
+    <section id="rsvp" className="relative py-24 md:py-32 bg-gradient-to-b from-ivory via-cream-200 to-ivory overflow-hidden">
+      <div className="max-w-lg mx-auto px-8">
         <motion.div
-          className="text-center mb-14"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-sans text-xs tracking-[0.3em] text-dusty-pink-400 uppercase mb-3">
+          <div className="w-44 sm:w-56 mx-auto text-bronze-500/70 mb-4">
+            <Pendopo />
+          </div>
+
+          <p className="font-script text-bronze-500 text-3xl sm:text-4xl mb-3">
+            Ucapan &amp; RSVP
+          </p>
+
+          <p className="font-sans text-xs tracking-[0.35em] text-bronze-500 uppercase mb-3">
             Konfirmasi
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-gray-800 mb-4">
-            RSVP
+
+          <h2 className="font-serif text-2xl sm:text-3xl text-taupe-800 mb-4">
+            Kehadiran Anda
           </h2>
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-dusty-pink-200" />
-            <Heart className="w-4 h-4 text-dusty-pink-300" />
-            <div className="w-12 h-px bg-dusty-pink-200" />
-          </div>
-          <p className="font-sans text-sm text-gray-500">
+
+          <OrnDivider className="mb-4" />
+
+          <p className="font-sans text-sm text-taupe-400">
             Mohon konfirmasi kehadiran Anda
           </p>
         </motion.div>
 
         <motion.div
-          className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-beige-200"
+          className="relative bg-cream-50 p-6 sm:p-8 shadow-[0_18px_45px_-20px_rgba(61,52,46,0.4)] border border-bronze-300/60"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
+          <div className="absolute -top-2 -left-2 w-7 text-bronze-500"><CornerFlourish /></div>
+          <div className="absolute -top-2 -right-2 w-7 text-bronze-500 rotate-90"><CornerFlourish /></div>
+          <div className="absolute -bottom-2 -right-2 w-7 text-bronze-500 rotate-180"><CornerFlourish /></div>
+          <div className="absolute -bottom-2 -left-2 w-7 text-bronze-500 -rotate-90"><CornerFlourish /></div>
+
           <AnimatePresence mode="wait">
             {status === 'success' ? (
               <motion.div
@@ -86,16 +105,16 @@ export default function RSVPSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
               >
-                <div className="w-16 h-16 rounded-full bg-sage-100 flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-8 h-8 text-sage-400" />
+                <div className="w-16 h-16 rounded-full bg-bronze-100 border border-bronze-300 flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-8 h-8 text-bronze-600" />
                 </div>
-                <h3 className="font-serif text-xl text-gray-800 mb-2">
+                <h3 className="font-serif text-xl text-taupe-800 mb-2">
                   Terima Kasih!
                 </h3>
-                <p className="font-sans text-sm text-gray-500">
+                <p className="font-sans text-sm text-taupe-400">
                   Konfirmasi kehadiran Anda telah diterima.
                   <br />
-                  <span className="text-xs text-gray-400 mt-1 block">
+                  <span className="text-xs text-taupe-300 mt-1 block">
                     (Data tersimpan sementara di browser)
                   </span>
                 </p>
@@ -110,8 +129,8 @@ export default function RSVPSection() {
                 exit={{ opacity: 0 }}
               >
                 <div>
-                  <label htmlFor="rsvp-name" className="block font-sans text-sm text-gray-700 mb-1.5">
-                    Nama Lengkap <span className="text-dusty-pink-300">*</span>
+                  <label htmlFor="rsvp-name" className="block font-sans text-sm text-taupe-600 mb-1.5">
+                    Nama Lengkap <span className="text-bronze-500">*</span>
                   </label>
                   <input
                     id="rsvp-name"
@@ -120,11 +139,7 @@ export default function RSVPSection() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Masukkan nama lengkap"
-                    className={`w-full px-4 py-3 rounded-xl border bg-beige-50/50 font-sans text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 transition-all ${
-                      errors.name
-                        ? 'border-red-300 focus:ring-red-200'
-                        : 'border-beige-200 focus:ring-dusty-pink-200 focus:border-dusty-pink-300'
-                    }`}
+                    className={inputClass(errors.name)}
                   />
                   {errors.name && (
                     <p className="mt-1 font-sans text-xs text-red-500 flex items-center gap-1">
@@ -135,8 +150,8 @@ export default function RSVPSection() {
                 </div>
 
                 <div>
-                  <label className="block font-sans text-sm text-gray-700 mb-1.5">
-                    Konfirmasi Kehadiran <span className="text-dusty-pink-300">*</span>
+                  <label className="block font-sans text-sm text-taupe-600 mb-1.5">
+                    Konfirmasi Kehadiran <span className="text-bronze-500">*</span>
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     {[
@@ -145,10 +160,10 @@ export default function RSVPSection() {
                     ].map((option) => (
                       <label
                         key={option.value}
-                        className={`relative flex items-center justify-center p-3 rounded-xl border cursor-pointer transition-all ${
+                        className={`relative flex items-center justify-center p-3 rounded-full border cursor-pointer transition-all ${
                           formData.attendance === option.value
-                            ? 'bg-dusty-pink-50 border-dusty-pink-300 shadow-sm'
-                            : 'bg-beige-50/50 border-beige-200 hover:border-dusty-pink-200'
+                            ? 'bg-taupe-700 border-taupe-700 shadow-sm'
+                            : 'bg-cream-50 border-bronze-300/70 hover:border-bronze-400'
                         }`}
                       >
                         <input
@@ -159,11 +174,13 @@ export default function RSVPSection() {
                           onChange={handleChange}
                           className="sr-only"
                         />
-                        <span className={`font-sans text-sm ${
-                          formData.attendance === option.value
-                            ? 'text-dusty-pink-400 font-medium'
-                            : 'text-gray-600'
-                        }`}>
+                        <span
+                          className={`font-sans text-sm ${
+                            formData.attendance === option.value
+                              ? 'text-cream-100 font-medium'
+                              : 'text-taupe-600'
+                          }`}
+                        >
                           {option.label}
                         </span>
                       </label>
@@ -183,7 +200,7 @@ export default function RSVPSection() {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                   >
-                    <label htmlFor="guest-count" className="block font-sans text-sm text-gray-700 mb-1.5">
+                    <label htmlFor="guest-count" className="block font-sans text-sm text-taupe-600 mb-1.5">
                       Jumlah Tamu yang Hadir
                     </label>
                     <select
@@ -191,7 +208,7 @@ export default function RSVPSection() {
                       name="guestCount"
                       value={formData.guestCount}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50/50 font-sans text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-dusty-pink-200 focus:border-dusty-pink-300 transition-all"
+                      className={inputClass(false)}
                     >
                       {[1, 2, 3, 4, 5].map((num) => (
                         <option key={num} value={num}>
@@ -203,8 +220,8 @@ export default function RSVPSection() {
                 )}
 
                 <div>
-                  <label htmlFor="rsvp-message" className="block font-sans text-sm text-gray-700 mb-1.5">
-                    Ucapan & Doa <span className="text-gray-400">(Opsional)</span>
+                  <label htmlFor="rsvp-message" className="block font-sans text-sm text-taupe-600 mb-1.5">
+                    Ucapan &amp; Doa <span className="text-taupe-300">(Opsional)</span>
                   </label>
                   <textarea
                     id="rsvp-message"
@@ -213,14 +230,14 @@ export default function RSVPSection() {
                     onChange={handleChange}
                     placeholder="Tulis ucapan atau doa untuk kedua mempelai..."
                     rows={3}
-                    className="w-full px-4 py-3 rounded-xl border border-beige-200 bg-beige-50/50 font-sans text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-dusty-pink-200 focus:border-dusty-pink-300 transition-all resize-none"
+                    className={`${inputClass(false)} resize-none`}
                   />
                 </div>
 
                 <motion.button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full py-3.5 rounded-full bg-dusty-pink-300 text-white font-sans text-sm font-medium shadow-lg hover:shadow-xl hover:bg-dusty-pink-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-dusty-pink-300 focus:ring-offset-2"
+                  className="w-full py-3.5 rounded-full bg-taupe-700 text-cream-100 font-sans text-sm font-medium shadow-lg hover:shadow-xl hover:bg-taupe-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-bronze-400 focus:ring-offset-2 focus:ring-offset-cream-50"
                   whileHover={{ scale: status === 'loading' ? 1 : 1.02 }}
                   whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
                 >
@@ -234,7 +251,7 @@ export default function RSVPSection() {
                   )}
                 </motion.button>
 
-                <p className="text-center font-sans text-xs text-gray-400">
+                <p className="text-center font-sans text-xs text-taupe-300">
                   Data hanya tersimpan sementara di browser ini
                 </p>
               </motion.form>

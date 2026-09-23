@@ -13,6 +13,7 @@ import GiftSection from './components/GiftSection'
 import WishesSection from './components/WishesSection'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import { OrnateFrame } from './components/ornaments'
 import { useCountdown } from './hooks/useCountdown'
 import weddingData from './data/weddingData'
 
@@ -58,7 +59,8 @@ export default function App() {
       </AnimatePresence>
 
       {isCoverOpen && (
-        <div className="animate-fade-in">
+        <div className="animate-fade-in pb-24">
+          <OrnateFrame tone="light" />
           <Navbar />
           <main>
             <HeroSection />

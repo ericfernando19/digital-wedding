@@ -33,7 +33,7 @@ export default function MusicPlayer({ isPlaying, onToggle, audioRef }) {
   return (
     <>
       <motion.div
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2"
+        className="fixed bottom-20 right-4 z-40 flex items-center gap-2"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1, type: 'spring' }}
@@ -41,7 +41,7 @@ export default function MusicPlayer({ isPlaying, onToggle, audioRef }) {
         {isPlaying && (
           <motion.button
             onClick={handleMuteToggle}
-            className="p-2.5 rounded-full bg-white/80 backdrop-blur-sm shadow-lg border border-beige-200 text-gray-600 hover:text-dusty-pink-400 transition-colors focus:outline-none focus:ring-2 focus:ring-dusty-pink-200"
+            className="p-2.5 rounded-full bg-cream-50/90 backdrop-blur-sm shadow-lg border border-bronze-300 text-taupe-600 hover:text-bronze-600 transition-colors focus:outline-none focus:ring-2 focus:ring-bronze-300"
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             aria-label={isMuted ? 'Aktifkan suara' : 'Matikan suara'}
@@ -52,10 +52,10 @@ export default function MusicPlayer({ isPlaying, onToggle, audioRef }) {
 
         <motion.button
           onClick={onToggle}
-          className={`p-3 rounded-full shadow-lg border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-dusty-pink-200 ${
+          className={`p-3 rounded-full shadow-lg border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bronze-300 ${
             isPlaying
-              ? 'bg-dusty-pink-300 text-white border-dusty-pink-300 hover:bg-dusty-pink-400'
-              : 'bg-white/80 backdrop-blur-sm text-gray-600 border-beige-200 hover:text-dusty-pink-400'
+              ? 'bg-taupe-700 text-cream-100 border-taupe-700 hover:bg-taupe-800'
+              : 'bg-cream-50/90 backdrop-blur-sm text-taupe-600 border-bronze-300 hover:text-bronze-600'
           }`}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -73,21 +73,21 @@ export default function MusicPlayer({ isPlaying, onToggle, audioRef }) {
 
       {isPlaying && (
         <motion.div
-          className="fixed bottom-6 left-6 z-40"
+          className="fixed bottom-20 left-4 z-40"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/80 backdrop-blur-sm shadow-md border border-beige-200">
-            <Music className="w-3.5 h-3.5 text-dusty-pink-400 animate-pulse" />
-            <span className="font-sans text-xs text-gray-600 max-w-[120px] truncate">
+          <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-cream-50/90 backdrop-blur-sm shadow-md border border-bronze-300">
+            <Music className="w-3.5 h-3.5 text-bronze-500 animate-pulse" />
+            <span className="font-sans text-xs text-taupe-600 max-w-[120px] truncate">
               {weddingData.music.title}
             </span>
             <div className="flex gap-0.5">
               {[1, 2, 3, 4].map((i) => (
                 <motion.div
                   key={i}
-                  className="w-0.5 bg-dusty-pink-300 rounded-full"
+                  className="w-0.5 bg-bronze-400 rounded-full"
                   animate={{ height: ['4px', '12px', '4px'] }}
                   transition={{
                     repeat: Infinity,

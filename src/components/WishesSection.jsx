@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Send, MessageCircle, Loader2, AlertCircle } from 'lucide-react'
+import { Send, MessageCircle, Loader2, AlertCircle } from 'lucide-react'
+import { OrnDivider } from './ornaments'
 
 function WishCard({ wish, index }) {
   return (
     <motion.div
-      className="bg-white rounded-2xl p-5 shadow-sm border border-beige-200"
+      className="bg-cream-50 rounded-2xl p-5 shadow-sm border border-bronze-300/60"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -18,16 +19,16 @@ function WishCard({ wish, index }) {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
-            <h4 className="font-sans text-sm font-medium text-gray-800 truncate">
+            <h4 className="font-sans text-sm font-medium text-taupe-800 truncate">
               {wish.name}
             </h4>
             {wish.time && (
-              <span className="font-sans text-xs text-gray-400 flex-shrink-0">
+              <span className="font-sans text-xs text-taupe-300 flex-shrink-0">
                 {wish.time}
               </span>
             )}
           </div>
-          <p className="font-sans text-sm text-gray-600 leading-relaxed">
+          <p className="font-sans text-sm text-taupe-500 leading-relaxed">
             {wish.message}
           </p>
         </div>
@@ -102,28 +103,24 @@ export default function WishesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-sans text-xs tracking-[0.3em] text-dusty-pink-400 uppercase mb-3">
-            Ucapan & Doa
+          <p className="font-sans text-xs tracking-[0.3em] text-bronze-500 uppercase mb-3">
+            Ucapan &amp; Doa
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-gray-800 mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl text-taupe-800 mb-4">
             Kirim Ucapan
           </h2>
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-12 h-px bg-dusty-pink-200" />
-            <Heart className="w-4 h-4 text-dusty-pink-300" />
-            <div className="w-12 h-px bg-dusty-pink-200" />
-          </div>
+          <OrnDivider />
         </motion.div>
 
         <motion.div
-          className="bg-white rounded-3xl p-6 md:p-8 shadow-lg border border-beige-200 mb-8"
+          className="bg-cream-50 rounded-3xl p-6 md:p-8 shadow-lg border border-bronze-300/60 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="wish-name" className="block font-sans text-sm text-gray-700 mb-1.5">
+              <label htmlFor="wish-name" className="block font-sans text-sm text-taupe-600 mb-1.5">
                 Nama <span className="text-dusty-pink-300">*</span>
               </label>
               <input
@@ -133,10 +130,10 @@ export default function WishesSection() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Masukkan nama Anda"
-                className={`w-full px-4 py-3 rounded-xl border bg-beige-50/50 font-sans text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 transition-all ${
+                className={`w-full px-4 py-3 rounded-xl border bg-cream-50/60 font-sans text-sm text-taupe-800 placeholder-taupe-300 focus:outline-none focus:ring-2 transition-all ${
                   errors.name
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-beige-200 focus:ring-dusty-pink-200 focus:border-dusty-pink-300'
+                    : 'border-bronze-300/70 focus:ring-bronze-300 focus:border-bronze-400'
                 }`}
               />
               {errors.name && (
@@ -148,7 +145,7 @@ export default function WishesSection() {
             </div>
 
             <div>
-              <label htmlFor="wish-message" className="block font-sans text-sm text-gray-700 mb-1.5">
+              <label htmlFor="wish-message" className="block font-sans text-sm text-taupe-600 mb-1.5">
                 Ucapan & Doa <span className="text-dusty-pink-300">*</span>
               </label>
               <textarea
@@ -158,10 +155,10 @@ export default function WishesSection() {
                 onChange={handleChange}
                 placeholder="Tulis ucapan dan doa untuk kedua mempelai..."
                 rows={4}
-                className={`w-full px-4 py-3 rounded-xl border bg-beige-50/50 font-sans text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 transition-all resize-none ${
+                className={`w-full px-4 py-3 rounded-xl border bg-cream-50/60 font-sans text-sm text-taupe-800 placeholder-taupe-300 focus:outline-none focus:ring-2 transition-all resize-none ${
                   errors.message
                     ? 'border-red-300 focus:ring-red-200'
-                    : 'border-beige-200 focus:ring-dusty-pink-200 focus:border-dusty-pink-300'
+                    : 'border-bronze-300/70 focus:ring-bronze-300 focus:border-bronze-400'
                 }`}
               />
               {errors.message && (
@@ -175,7 +172,7 @@ export default function WishesSection() {
             <motion.button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full py-3.5 rounded-full bg-dusty-pink-300 text-white font-sans text-sm font-medium shadow-lg hover:shadow-xl hover:bg-dusty-pink-400 transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-dusty-pink-300 focus:ring-offset-2 flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-full bg-taupe-700 text-cream-100 font-sans text-sm font-medium shadow-lg hover:shadow-xl hover:bg-taupe-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-bronze-400 focus:ring-offset-2 flex items-center justify-center gap-2"
               whileHover={{ scale: status === 'loading' ? 1 : 1.02 }}
               whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
             >
@@ -192,7 +189,7 @@ export default function WishesSection() {
               )}
             </motion.button>
 
-            <p className="text-center font-sans text-xs text-gray-400">
+            <p className="text-center font-sans text-xs text-taupe-300">
               Ucapan tersimpan sementara di browser ini
             </p>
           </form>
@@ -201,7 +198,7 @@ export default function WishesSection() {
         <div className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
             <MessageCircle className="w-4 h-4 text-dusty-pink-300" />
-            <span className="font-sans text-sm text-gray-600">
+            <span className="font-sans text-sm text-taupe-500">
               {wishes.length} Ucapan
             </span>
           </div>

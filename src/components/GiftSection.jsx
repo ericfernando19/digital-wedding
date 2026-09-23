@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Copy, Check, Wallet, CreditCard, Smartphone } from 'lucide-react'
+import { Copy, Check, Wallet, CreditCard, Smartphone } from 'lucide-react'
 import weddingData from '../data/weddingData'
+import { OrnDivider } from './ornaments'
 
 function BankCard({ bank }) {
   const [copied, setCopied] = useState(false)
@@ -26,7 +27,7 @@ function BankCard({ bank }) {
 
   return (
     <motion.div
-      className="bg-white rounded-2xl p-5 shadow-sm border border-beige-200"
+      className="bg-cream-50 rounded-2xl p-5 shadow-sm border border-bronze-300/60"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -36,13 +37,13 @@ function BankCard({ bank }) {
           <CreditCard className="w-5 h-5 text-white" />
         </div>
         <div>
-          <p className="font-sans text-xs text-gray-400">{bank.name}</p>
-          <p className="font-sans text-sm font-medium text-gray-800">{bank.accountName}</p>
+          <p className="font-sans text-xs text-taupe-300">{bank.name}</p>
+          <p className="font-sans text-sm font-medium text-taupe-800">{bank.accountName}</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 bg-beige-50 rounded-xl px-4 py-3">
-        <span className="font-mono text-lg tracking-wider text-gray-800 flex-1 select-all">
+      <div className="flex items-center gap-2 bg-cream-100 rounded-xl px-4 py-3">
+        <span className="font-mono text-lg tracking-wider text-taupe-800 flex-1 select-all">
           {bank.accountNumber}
         </span>
         <motion.button
@@ -114,7 +115,7 @@ function EWalletCard({ ewallet }) {
 
   return (
     <motion.div
-      className="bg-white rounded-2xl p-5 shadow-sm border border-beige-200"
+      className="bg-cream-50 rounded-2xl p-5 shadow-sm border border-bronze-300/60"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -124,13 +125,13 @@ function EWalletCard({ ewallet }) {
           <Smartphone className="w-5 h-5 text-white" />
         </div>
         <div>
-          <p className="font-sans text-xs text-gray-400">{ewallet.name}</p>
-          <p className="font-sans text-sm font-medium text-gray-800">{ewallet.accountName}</p>
+          <p className="font-sans text-xs text-taupe-300">{ewallet.name}</p>
+          <p className="font-sans text-sm font-medium text-taupe-800">{ewallet.accountName}</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 bg-beige-50 rounded-xl px-4 py-3">
-        <span className="font-mono text-lg tracking-wider text-gray-800 flex-1 select-all">
+      <div className="flex items-center gap-2 bg-cream-100 rounded-xl px-4 py-3">
+        <span className="font-mono text-lg tracking-wider text-taupe-800 flex-1 select-all">
           {ewallet.phoneNumber}
         </span>
         <motion.button
@@ -185,18 +186,14 @@ export default function GiftSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-sans text-xs tracking-[0.3em] text-dusty-pink-400 uppercase mb-3">
+          <p className="font-sans text-xs tracking-[0.3em] text-bronze-500 uppercase mb-3">
             Hadiah
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-gray-800 mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl text-taupe-800 mb-4">
             {gift.title}
           </h2>
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-dusty-pink-200" />
-            <Heart className="w-4 h-4 text-dusty-pink-300" />
-            <div className="w-12 h-px bg-dusty-pink-200" />
-          </div>
-          <p className="font-sans text-sm text-gray-500 max-w-xs mx-auto leading-relaxed">
+          <OrnDivider className="mb-4" />
+          <p className="font-sans text-sm text-taupe-400 max-w-xs mx-auto leading-relaxed">
             {gift.subtitle}
           </p>
         </motion.div>
@@ -205,7 +202,7 @@ export default function GiftSection() {
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-4">
               <Wallet className="w-4 h-4 text-dusty-pink-300" />
-              <p className="font-sans text-sm font-medium text-gray-700">Transfer Bank</p>
+              <p className="font-sans text-sm font-medium text-taupe-600">Transfer Bank</p>
             </div>
             <div className="space-y-3">
               {gift.banks.map((bank, index) => (
@@ -219,7 +216,7 @@ export default function GiftSection() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Smartphone className="w-4 h-4 text-dusty-pink-300" />
-              <p className="font-sans text-sm font-medium text-gray-700">E-Wallet</p>
+              <p className="font-sans text-sm font-medium text-taupe-600">E-Wallet</p>
             </div>
             <div className="space-y-3">
               {gift.ewallet.map((ewallet, index) => (

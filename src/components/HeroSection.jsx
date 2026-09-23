@@ -1,48 +1,44 @@
 import { motion } from 'framer-motion'
-import { Heart } from 'lucide-react'
 import weddingData from '../data/weddingData'
 import { useGuestName } from '../hooks/useGuestName'
+import { OrnatePhotoFrame, OrnDivider, BotanicalSpray, Pendopo } from './ornaments'
 
 export default function HeroSection() {
   const guestName = useGuestName()
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-beige-50 via-ivory to-dusty-pink-50" />
+    <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-cream-50 via-ivory to-cream-200" />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-dusty-pink-100 rounded-full blur-3xl opacity-30" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-sage-100 rounded-full blur-3xl opacity-20" />
-        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-gold-100 rounded-full blur-2xl opacity-20" />
+      <div className="absolute top-16 left-0 w-16 sm:w-24 h-56 sm:h-72 text-bronze-400/25 pointer-events-none">
+        <BotanicalSpray />
+      </div>
+      <div className="absolute top-16 right-0 w-16 sm:w-24 h-56 sm:h-72 text-bronze-400/25 pointer-events-none">
+        <BotanicalSpray flip />
       </div>
 
-      <div className="relative z-10 text-center px-6 max-w-lg mx-auto py-20">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[95%] max-w-xs sm:max-w-sm text-bronze-500/20 pointer-events-none">
+        <Pendopo />
+      </div>
+
+      <div className="relative z-10 text-center px-8 max-w-md mx-auto pt-24 pb-60 sm:pb-72">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-8"
+          className="mb-8 flex justify-center"
         >
-          <div className="relative inline-block">
-            <img
-              src={weddingData.couplePhoto}
-              alt={`Foto ${weddingData.groom.nickname} & ${weddingData.bride.nickname}`}
-              className="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white shadow-2xl mx-auto"
-              loading="eager"
-            />
-            <motion.div
-              className="absolute -bottom-2 -right-2 w-12 h-12 bg-dusty-pink-300 rounded-full flex items-center justify-center shadow-lg"
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            >
-              <Heart className="w-5 h-5 text-white fill-white" />
-            </motion.div>
-          </div>
+          <OrnatePhotoFrame
+            src={weddingData.couplePhoto}
+            alt={`Foto ${weddingData.groom.nickname} & ${weddingData.bride.nickname}`}
+            ratio="w-44 h-52 sm:w-52 sm:h-60"
+            eager
+          />
         </motion.div>
 
         <motion.p
-          className="font-sans text-xs md:text-sm tracking-[0.3em] text-dusty-pink-400 uppercase mb-4"
+          className="font-sans text-[10px] sm:text-xs tracking-[0.4em] text-bronze-500 uppercase mb-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -52,54 +48,58 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.h2
-          className="font-serif text-4xl md:text-6xl text-gray-800 mb-6 leading-tight"
+          className="font-serif text-4xl sm:text-5xl text-taupe-800 mb-3 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
           {weddingData.groom.nickname}
-          <span className="font-script text-dusty-pink-300 mx-3 text-3xl md:text-5xl">&</span>
+          <span className="font-script text-bronze-500 mx-2 text-3xl sm:text-4xl">&</span>
           {weddingData.bride.nickname}
         </motion.h2>
 
         <motion.p
-          className="font-sans text-sm md:text-base text-gray-500 mb-8"
+          className="font-sans text-sm sm:text-base text-taupe-500 mb-5"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
         >
-          {weddingData.event.resepsi.date}
+          {weddingData.event.resepsi.day}, {weddingData.event.resepsi.date}
         </motion.p>
+
+        <OrnDivider className="mb-6" />
 
         {guestName && (
           <motion.div
-            className="mb-6 p-4 rounded-xl bg-white/60 backdrop-blur-sm border border-dusty-pink-100"
+            className="mb-6 px-5 py-3.5 bg-cream-50/80 backdrop-blur-sm border border-bronze-300/60"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.7 }}
           >
-            <p className="font-sans text-xs text-gray-400 mb-1">Kepada Yth.</p>
-            <p className="font-sans text-sm md:text-base text-gray-700 font-medium">
+            <p className="font-sans text-[10px] tracking-widest text-bronze-500 uppercase mb-1">
+              Kepada Yth.
+            </p>
+            <p className="font-sans text-sm sm:text-base text-taupe-700 font-medium">
               Bapak/Ibu/Saudara/i {guestName}
             </p>
           </motion.div>
         )}
 
         <motion.div
-          className="max-w-sm mx-auto p-5 rounded-2xl bg-white/50 backdrop-blur-sm border border-beige-200 shadow-sm"
+          className="max-w-sm mx-auto px-5 py-4 bg-cream-50/70 backdrop-blur-sm border border-bronze-300/50"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
         >
-          <p className="font-serif text-sm md:text-base text-gray-600 italic leading-relaxed">
-            "{weddingData.quote}"
+          <p className="font-serif text-sm sm:text-[15px] text-taupe-600 italic leading-relaxed">
+            &ldquo;{weddingData.quote}&rdquo;
           </p>
-          <p className="font-sans text-xs text-dusty-pink-400 mt-2">
-            — {weddingData.quoteSource}
+          <p className="font-sans text-xs text-bronze-500 mt-2">
+            &mdash; {weddingData.quoteSource}
           </p>
         </motion.div>
       </div>

@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronLeft, ChevronRight, Heart, ZoomIn } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 import weddingData from '../data/weddingData'
+import { OrnDivider } from './ornaments'
 
 function GalleryImage({ image, index, onClick }) {
   return (
     <motion.div
-      className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-md border border-beige-200"
+      className="relative group cursor-pointer overflow-hidden rounded-2xl shadow-md border border-bronze-300/60"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -23,9 +24,9 @@ function GalleryImage({ image, index, onClick }) {
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm">
-          <ZoomIn className="w-3.5 h-3.5 text-gray-700" />
-          <span className="font-sans text-xs text-gray-700">Lihat</span>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cream-50/90 backdrop-blur-sm">
+          <ZoomIn className="w-3.5 h-3.5 text-taupe-700" />
+          <span className="font-sans text-xs text-taupe-700">Lihat</span>
         </div>
       </div>
     </motion.div>
@@ -115,17 +116,13 @@ export default function GallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <p className="font-sans text-xs tracking-[0.3em] text-dusty-pink-400 uppercase mb-3">
+          <p className="font-sans text-xs tracking-[0.3em] text-bronze-500 uppercase mb-3">
             Momen Bahagia
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-gray-800 mb-4">
+          <h2 className="font-serif text-3xl md:text-4xl text-taupe-800 mb-4">
             Galeri Foto
           </h2>
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-12 h-px bg-dusty-pink-200" />
-            <Heart className="w-4 h-4 text-dusty-pink-300" />
-            <div className="w-12 h-px bg-dusty-pink-200" />
-          </div>
+          <OrnDivider />
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">

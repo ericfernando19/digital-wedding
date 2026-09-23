@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { Heart } from 'lucide-react'
 import weddingData from '../data/weddingData'
+import { OrnatePhotoFrame, OrnDivider } from './ornaments'
 
 function PersonCard({ person, side }) {
   const isGroom = side === 'groom'
@@ -13,45 +13,36 @@ function PersonCard({ person, side }) {
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: isGroom ? 0 : 0.2 }}
     >
-      <div className="relative mb-6">
-        <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-white shadow-xl">
-          <img
-            src={person.photo}
-            alt={`Foto ${person.nickname}`}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-8 bg-dusty-pink-100 rounded-full flex items-center justify-center">
-          <Heart className="w-3.5 h-3.5 text-dusty-pink-300" />
-        </div>
+      <div className="mb-7 flex justify-center">
+        <OrnatePhotoFrame
+          src={person.photo}
+          alt={`Foto ${person.nickname}`}
+          ratio="w-36 h-44 sm:w-44 sm:h-52"
+        />
       </div>
 
-      <p className="font-sans text-xs tracking-[0.2em] text-dusty-pink-400 uppercase mb-2">
+      <p className="font-sans text-[10px] tracking-[0.3em] text-bronze-500 uppercase mb-2">
         {person.childOrder}
       </p>
 
-      <h3 className="font-serif text-2xl md:text-3xl text-gray-800 mb-1">
+      <h3 className="font-serif text-2xl sm:text-3xl text-taupe-800 mb-1.5">
         {person.fullName}
       </h3>
 
-      <p className="font-sans text-sm text-gray-500 mb-4">
-        Putra/Ibu {person.motherName.split(' ').slice(1).join(' ')} & Bapak {person.fatherName.split(' ').slice(1).join(' ')}
+      <p className="font-sans text-sm text-taupe-400 max-w-xs leading-relaxed">
+        Putra/Ibu {person.motherName.split(' ').slice(1).join(' ')} &amp; Bapak{' '}
+        {person.fatherName.split(' ').slice(1).join(' ')}
       </p>
 
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-px bg-dusty-pink-200" />
-        <Heart className="w-3 h-3 text-dusty-pink-300 fill-dusty-pink-300" />
-        <div className="w-8 h-px bg-dusty-pink-200" />
-      </div>
+      <OrnDivider className="mt-5" />
     </motion.div>
   )
 }
 
 export default function CoupleSection() {
   return (
-    <section id="couple" className="py-20 md:py-28 bg-gradient-to-b from-ivory via-beige-50 to-ivory">
-      <div className="max-w-lg mx-auto px-6">
+    <section id="couple" className="relative py-24 md:py-32 bg-gradient-to-b from-cream-200 via-ivory to-cream-100">
+      <div className="max-w-lg mx-auto px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -59,20 +50,23 @@ export default function CoupleSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-sans text-xs tracking-[0.3em] text-dusty-pink-400 uppercase mb-3">
-            Insya Allah
+          <p className="font-script text-bronze-500 text-3xl sm:text-4xl mb-5">
+            Assalamualaikum Wr. Wb.
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-gray-800 mb-4">
-            Kedua Mempelai
-          </h2>
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-dusty-pink-200" />
-            <Heart className="w-4 h-4 text-dusty-pink-300" />
-            <div className="w-12 h-px bg-dusty-pink-200" />
-          </div>
-          <p className="font-sans text-sm text-gray-500 max-w-xs mx-auto">
+
+          <p className="font-sans text-sm sm:text-[15px] text-taupe-500 max-w-sm mx-auto leading-relaxed mb-6">
             {weddingData.openingText}
           </p>
+
+          <p className="font-sans text-xs tracking-[0.35em] text-bronze-500 uppercase mb-3">
+            Insya Allah
+          </p>
+
+          <h2 className="font-serif text-3xl sm:text-4xl text-taupe-800 mb-4">
+            Kedua Mempelai
+          </h2>
+
+          <OrnDivider />
         </motion.div>
 
         <div className="space-y-16">
@@ -85,8 +79,8 @@ export default function CoupleSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, type: 'spring' }}
           >
-            <div className="w-16 h-16 rounded-full bg-dusty-pink-100 flex items-center justify-center shadow-lg border-4 border-white">
-              <span className="font-script text-2xl text-dusty-pink-400">&</span>
+            <div className="w-14 h-14 rounded-full bg-cream-50 flex items-center justify-center shadow-md border border-bronze-300/70">
+              <span className="font-script text-2xl text-bronze-500">&</span>
             </div>
           </motion.div>
 
